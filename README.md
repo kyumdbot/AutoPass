@@ -38,6 +38,8 @@ Arduino HID Keyboard 的程式碼放在 `BLE_KB_Nano33` 目錄下，iOS app 的�
 
 ### 3. 上傳程式到 arduino：
 
+請先依照 [Getting started with the Arduino NANO 33 IoT](https://www.arduino.cc/en/Guide/NANO33IoT) 這篇教學安裝好 NANO 33 IoT 所需的工具程式，然後在 Arduino IDE 的 Library Manager 搜尋 ArduinoBLE 並安裝之。
+
 把 Nano 33 IoT 連接到電腦，然後在 Arduino IDE 裡選好 Board 與 Port，然後按下 Upload 按鈕，如下圖所示：
 
 ![set Arduino IDE](imgs/arduino_ide_set.png)
@@ -77,7 +79,7 @@ Arduino HID Keyboard 的程式碼放在 `BLE_KB_Nano33` 目錄下，iOS app 的�
 
 ### Q: `BLE_KB_Nano33.ino` 的 `MY_BLE_LOCAL_NAME` 字串值一定要使用 `AutoPass_` 做前綴名稱嗎？
 
-A: 如果你想使用自己定義的前綴名稱，請修改 iOS app 的 `ViewController.swift`，把這一行：
+**A:** 如果你想使用自己定義的前綴名稱，請修改 iOS app 的 `ViewController.swift`，把這一行：
 
 ```
 let bleDevice = MyBLEDevice(prefixName: "AutoPass")
@@ -94,7 +96,6 @@ let bleDevice = MyBLEDevice(prefixName: "AutoPass")
 
 ### Q: 最多可傳送幾個字元的密碼？
 
-A: 經過測試，目前 `Arduino Nano 33 IoT` 的 BLE 一次最多只能接收 20 個字元，所以，如果你的密碼超過 20 個字元，這個 app 可能不適用於你。
+**A:** 經過測試，目前 `Arduino Nano 33 IoT` 的 BLE 一次最多只能接收 20 個字元，所以，如果你的密碼超過 20 個字元，這個 app 可能不適用於你。
 
 <br>
-
