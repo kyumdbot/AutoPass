@@ -19,7 +19,7 @@ BLEPeripheral blePeripheral = BLEPeripheral(PIN_REQ, PIN_RDY, PIN_RST);
 BLEService kbService = BLEService(SERVICE_UUID);
 
 BLECharacteristic    textCharacteristic  = BLECharacteristic(INPUT_TEXT_UUID, BLEWrite | BLENotify, MAX_TEXT_LENGTH);
-BLEIntCharacteristic enterCharacteristic = BLEIntCharacteristic(SEND_ENTER_UUID, BLEWrite | BLENotify);
+BLECharCharacteristic enterCharacteristic = BLECharCharacteristic(SEND_ENTER_UUID, BLEWrite | BLENotify);
 
 BLEDescriptor textDescriptor  = BLEDescriptor("2901", "Keyin text");
 BLEDescriptor enterDescriptor = BLEDescriptor("2901", "Keyin ENTER key");
@@ -100,11 +100,13 @@ void resetTextValue() {
 void blePeripheralConnectHandler(BLECentral& central) {
   DLog("Connected event, central: ");
   DLog(central.address());
+  digitalWrite(LED_BUILTIN, HIGH);
 }
 
 void blePeripheralDisconnectHandler(BLECentral& central) {
   DLog("Disconnected event, central: ");
   DLog(central.address());
+  digitalWrite(LED_BUILTIN, LOW);
 }
 
 
@@ -125,18 +127,16 @@ void textCharacteristicWritten(BLECentral& central, BLECharacteristic& character
   DLog(text);
 
   Keyboard.print(text);
-  resetTextValue();
 }
 
 void enterCharacteristicWritten(BLECentral& central, BLECharacteristic& characteristic) {
   DLog("enterCharacteristic event, writen: ");
 
-  int sendEnter = enterCharacteristic.value();
+  char sendEnter = enterCharacteristic.value();
   if (sendEnter > 0) {
     DLog("Send Enter Key.");
     Keyboard.press(KEY_RETURN);
     delay(20);
     Keyboard.releaseAll();
-    enterCharacteristic.setValue(0);
   }
 }
