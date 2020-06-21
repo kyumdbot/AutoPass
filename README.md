@@ -106,4 +106,3 @@ let bleDevice = MyBLEDevice(prefixName: "AutoPass")
 
 ![Blend Micro](imgs/blend_micro.jpg)
 
-<br>
