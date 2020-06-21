@@ -98,7 +98,7 @@ let bleDevice = MyBLEDevice(prefixName: "AutoPass")
 
 **A:** 經過測試，目前 `Arduino Nano 33 IoT` 的 BLE 一次最多只能接收 20 個字元，所以，如果你的密碼超過 20 個字元，這個 app 可能不適用於你。
 
-<hr>
+<br>
 
 ## 更新日誌
 
