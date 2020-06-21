@@ -111,7 +111,7 @@ class MyBLEDevice: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate  {
     //- Send 1 to peripheral's textCharacteristic
     func sendEnter() {
         do {
-            let value = 1
+            let value : UInt8 = 1
             let data = withUnsafeBytes(of: value) { Data($0) }
             try sendData(data, uuidString: enterCharacteristicUUID, writeType: .withResponse)
         } catch {
