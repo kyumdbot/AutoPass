@@ -46,8 +46,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.title = "AutoPass"
         setupMsgLael()
         setupDeviceDisconnectButton()
-        setupLeftBarButtonItem()
-        setupRightBarButtonItem()
+        setupScanBarButtonItem()
+        setupNewItemBarButtonItem()
         setupTableView()
     }
     
@@ -62,12 +62,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         deviceDisconnectButton.layer.cornerRadius = 7
     }
     
-    func setupLeftBarButtonItem() {
+    func setupScanBarButtonItem() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "scan", style: .plain, target: self, action: #selector(pressedScanBarButton))
     }
     
-    func setupRightBarButtonItem() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .plain, target: self, action: #selector(pressedNewItemBarButton))
+    func setupNewItemBarButtonItem() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(pressedNewItemBarButton))
     }
     
     func setupTableView() {
@@ -85,12 +85,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         weak var weakSelf = self
         vc.onCloseCallback = { deviceName in
             print("Close BLEDevicesViewController...")
+            weakSelf?.removeScanBarButtonItem()
             weakSelf?.msgLabelShowDeviceName(deviceName)
             weakSelf?.setBLEDeviceValueChangedCallback()
             weakSelf?.setBLEDeviceOnDisconnectCallback()
             weakSelf?.reloadTable()
         }
         present(vc, animated: true, completion: nil)
+    }
+    
+    func removeScanBarButtonItem() {
+        navigationItem.leftBarButtonItem = nil
     }
     
     func msgLabelShowDeviceName(_ deviceName: String) {
@@ -143,6 +148,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             weakSelf?.showBLEDevicesViewController()
             weakSelf?.msgLabelShowDeviceName("")
             weakSelf?.clearItems()
+            weakSelf?.setupScanBarButtonItem()
         })
     }
     
@@ -154,6 +160,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // MARK: - Scan BarButton
     
     @objc func pressedScanBarButton() {
+        if bleDevice.isConnected {
+            return
+        }
         self.showBLEDevicesViewController()
     }
 
@@ -161,6 +170,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // MARK: - Add Item
     
     @objc func pressedNewItemBarButton() {
+        if bleDevice.isConnected == false {
+            return
+        }
+        
         let vc = storyboard?.instantiateViewController(withIdentifier: "AddItemVC") as! AddItemViewController
         weak var weakSelf = self
         vc.onAddedCallback = { title, password, appendEnter in

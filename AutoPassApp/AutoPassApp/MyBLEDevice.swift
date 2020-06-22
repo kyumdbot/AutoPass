@@ -155,7 +155,6 @@ class MyBLEDevice: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate  {
         if let action = beginAction {
             DispatchQueue.main.async {
                 action(isReady)
-                self.beginAction = nil
             }
         }
     }
@@ -166,7 +165,6 @@ class MyBLEDevice: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate  {
             if let action = scanAction {
                 DispatchQueue.main.async {
                     action(peripheral)
-                    self.scanAction = nil
                 }
             }
         }
@@ -195,7 +193,6 @@ class MyBLEDevice: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate  {
         if let action = connectFailureAction {
             DispatchQueue.main.async {
                 action(errorString)
-                self.connectFailureAction = nil
             }
         }
     }
@@ -211,7 +208,6 @@ class MyBLEDevice: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate  {
         if let action = disconnectDoneAction {
             DispatchQueue.main.async {
                 action()
-                self.disconnectDoneAction = nil
             }
         }
     }
@@ -223,8 +219,6 @@ class MyBLEDevice: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate  {
         if let action = connectFailureAction {
             DispatchQueue.main.async {
                 action(errorString)
-                self.connectFailureAction = nil
-                self.connectSuccessAction = nil
             }
         }
     }
@@ -233,8 +227,6 @@ class MyBLEDevice: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate  {
         if let action = connectSuccessAction {
             DispatchQueue.main.async {
                 action(peripheral)
-                self.connectSuccessAction = nil
-                self.connectFailureAction = nil
             }
         }
     }
