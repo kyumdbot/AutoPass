@@ -188,13 +188,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnh-uh-deZ">
-                                <rect key="frame" x="370" y="49" width="40" height="40"/>
+                                <rect key="frame" x="369" y="49" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Ck3-mE-Ph3"/>
                                     <constraint firstAttribute="width" constant="40" id="Ykc-QE-b8S"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                <state key="normal" title="X">
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="❌">
                                     <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -227,7 +227,10 @@
                                     <constraint firstAttribute="height" constant="34" id="Nh3-5l-XL3"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="zd2-6l-O9T" id="dT5-0d-peb"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nto-9L-Qge">
                                 <rect key="frame" x="111" y="171.5" width="283" height="34"/>
@@ -235,15 +238,19 @@
                                     <constraint firstAttribute="height" constant="34" id="Cw8-oQ-aHL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="join"/>
+                                <connections>
+                                    <outlet property="delegate" destination="zd2-6l-O9T" id="9mS-DL-FLa"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Xb-LK-pTO">
-                                <rect key="frame" x="167" y="283" width="80" height="36"/>
+                                <rect key="frame" x="167" y="285" width="80" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="Pjy-ua-xqU"/>
                                     <constraint firstAttribute="height" constant="36" id="Pob-s1-xoe"/>
                                 </constraints>
-                                <state key="normal" title="Add"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Join"/>
                                 <connections>
                                     <action selector="pressedAddButton" destination="zd2-6l-O9T" eventType="touchUpInside" id="Jwq-Qd-W6n"/>
                                 </connections>
@@ -270,7 +277,7 @@
                         <constraints>
                             <constraint firstItem="nto-9L-Qge" firstAttribute="leading" secondItem="Os9-wZ-dqJ" secondAttribute="trailing" constant="5" id="6Fd-nP-Bd2"/>
                             <constraint firstItem="Qko-e6-a5E" firstAttribute="centerY" secondItem="4Uh-1X-MPG" secondAttribute="centerY" id="8CV-QN-WAY"/>
-                            <constraint firstItem="Uiz-Kw-3BY" firstAttribute="trailing" secondItem="hnh-uh-deZ" secondAttribute="trailing" constant="4" id="Bcs-dC-h7e"/>
+                            <constraint firstItem="Uiz-Kw-3BY" firstAttribute="trailing" secondItem="hnh-uh-deZ" secondAttribute="trailing" constant="5" id="Bcs-dC-h7e"/>
                             <constraint firstItem="Uiz-Kw-3BY" firstAttribute="trailing" secondItem="pyY-sF-48C" secondAttribute="trailing" constant="20" id="F6z-WE-wkg"/>
                             <constraint firstItem="Uiz-Kw-3BY" firstAttribute="trailing" secondItem="Qko-e6-a5E" secondAttribute="trailing" constant="22" id="KBL-xM-dWL"/>
                             <constraint firstItem="pyY-sF-48C" firstAttribute="centerY" secondItem="jhK-qx-3bK" secondAttribute="centerY" id="M6x-8G-2Fz"/>
@@ -279,7 +286,7 @@
                             <constraint firstItem="jhK-qx-3bK" firstAttribute="top" secondItem="Uiz-Kw-3BY" secondAttribute="top" constant="76" id="QL3-jQ-QBy"/>
                             <constraint firstItem="Qko-e6-a5E" firstAttribute="leading" secondItem="4Uh-1X-MPG" secondAttribute="trailing" constant="8" id="RAI-NV-GYp"/>
                             <constraint firstItem="nto-9L-Qge" firstAttribute="top" secondItem="pyY-sF-48C" secondAttribute="bottom" constant="18" id="SV2-hu-oli"/>
-                            <constraint firstItem="5Xb-LK-pTO" firstAttribute="top" secondItem="4Uh-1X-MPG" secondAttribute="bottom" constant="28" id="VRu-wR-v5l"/>
+                            <constraint firstItem="5Xb-LK-pTO" firstAttribute="top" secondItem="4Uh-1X-MPG" secondAttribute="bottom" constant="30" id="VRu-wR-v5l"/>
                             <constraint firstItem="Qko-e6-a5E" firstAttribute="top" secondItem="nto-9L-Qge" secondAttribute="bottom" constant="18" id="ark-9c-Rvh"/>
                             <constraint firstItem="nto-9L-Qge" firstAttribute="centerY" secondItem="Os9-wZ-dqJ" secondAttribute="centerY" id="ec8-Lf-WSi"/>
                             <constraint firstItem="Uiz-Kw-3BY" firstAttribute="trailing" secondItem="nto-9L-Qge" secondAttribute="trailing" constant="20" id="eeQ-o9-rbD"/>

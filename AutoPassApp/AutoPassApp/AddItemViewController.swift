@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddItemViewController: UIViewController {
+class AddItemViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var titleField : UITextField!
     @IBOutlet var passwordField : UITextField!
@@ -23,6 +23,10 @@ class AddItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     
@@ -47,6 +51,7 @@ class AddItemViewController: UIViewController {
     // MARK: - Action
     
     @IBAction func pressedCloseButton() {
+        self.view.endEditing(true)
         dismiss(animated: true, completion: nil)
     }
     
@@ -69,6 +74,20 @@ class AddItemViewController: UIViewController {
             onAddedCallback = nil
             dismiss(animated: true, completion: nil)
         }
+    }
+    
+    
+    // MARK: - UITextField Delegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == titleField {
+            passwordField.becomeFirstResponder()
+        } else if textField == passwordField {
+            pressedAddButton()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return true
     }
     
     
