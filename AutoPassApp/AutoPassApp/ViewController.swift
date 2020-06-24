@@ -183,8 +183,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func addItem(title: String, password: String, appendEnter: Bool) {
-        StoreHelper.shared.insertItem(title: title, password: password, appendEnter: appendEnter)
-        StoreHelper.shared.save()
+        StorageHelper.shared.insertItem(title: title, password: password, appendEnter: appendEnter)
+        StorageHelper.shared.save()
         reloadTable()
     }
     
@@ -192,7 +192,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // MARK: - Reload Table
     
     func reloadTable() {
-        items = StoreHelper.shared.queryAll()
+        items = StorageHelper.shared.queryAll()
         tableView.reloadData()
     }
     
@@ -229,8 +229,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if let item = items?[indexPath.row] {
-            StoreHelper.shared.deleteItem(item)
-            StoreHelper.shared.save()
+            StorageHelper.shared.deleteItem(item)
+            StorageHelper.shared.save()
             items?.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }

@@ -10,9 +10,9 @@ import UIKit
 import CoreData
 
 
-class StoreHelper {
+class StorageHelper {
     
-    static let shared = StoreHelper()
+    static let shared = StorageHelper()
     
     
     // MARK: - Methods

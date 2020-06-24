@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		42823C5E24791BAC00D46932 /* BLEDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42823C5D24791BAC00D46932 /* BLEDevicesViewController.swift */; };
 		42823C6024891DA400D46932 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42823C5F24891DA400D46932 /* AddItemViewController.swift */; };
-		42823C6E24908C8B00D46932 /* StoreHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42823C6D24908C8B00D46932 /* StoreHelper.swift */; };
+		42823C6E24908C8B00D46932 /* StorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42823C6D24908C8B00D46932 /* StorageHelper.swift */; };
 		42A502A82492638500FFC943 /* app.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42823C61249084EC00D46932 /* app.xcdatamodeld */; };
 		42A502AF24964E1800FFC943 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A502AE24964E1800FFC943 /* LocalAuthentication.framework */; };
 		42A502B2249719FA00FFC943 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A502B0249719F900FFC943 /* Item+CoreDataClass.swift */; };
@@ -27,7 +27,7 @@
 		42823C5D24791BAC00D46932 /* BLEDevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEDevicesViewController.swift; sourceTree = "<group>"; };
 		42823C5F24891DA400D46932 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		42823C62249084EC00D46932 /* app.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = app.xcdatamodel; sourceTree = "<group>"; };
-		42823C6D24908C8B00D46932 /* StoreHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreHelper.swift; sourceTree = "<group>"; };
+		42823C6D24908C8B00D46932 /* StorageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageHelper.swift; sourceTree = "<group>"; };
 		42A502AE24964E1800FFC943 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		42A502B0249719F900FFC943 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Item+CoreDataClass.swift"; path = "AutoPassApp/Item+CoreDataClass.swift"; sourceTree = "<group>"; };
 		42A502B1249719F900FFC943 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Item+CoreDataProperties.swift"; path = "AutoPassApp/Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 				42823C61249084EC00D46932 /* app.xcdatamodeld */,
 				42BC9CD92474D6400039FB88 /* AppDelegate.swift */,
 				42BC9CDB2474D6400039FB88 /* SceneDelegate.swift */,
-				42823C6D24908C8B00D46932 /* StoreHelper.swift */,
+				42823C6D24908C8B00D46932 /* StorageHelper.swift */,
 				42A79CB92477E1D6006B1D89 /* MyBLEDevice.swift */,
 				42823C5D24791BAC00D46932 /* BLEDevicesViewController.swift */,
 				42823C5F24891DA400D46932 /* AddItemViewController.swift */,
@@ -176,7 +176,7 @@
 				42BC9CDA2474D6400039FB88 /* AppDelegate.swift in Sources */,
 				42A502B2249719FA00FFC943 /* Item+CoreDataClass.swift in Sources */,
 				42A502B3249719FA00FFC943 /* Item+CoreDataProperties.swift in Sources */,
-				42823C6E24908C8B00D46932 /* StoreHelper.swift in Sources */,
+				42823C6E24908C8B00D46932 /* StorageHelper.swift in Sources */,
 				42823C5E24791BAC00D46932 /* BLEDevicesViewController.swift in Sources */,
 				42BC9CDC2474D6400039FB88 /* SceneDelegate.swift in Sources */,
 				42823C6024891DA400D46932 /* AddItemViewController.swift in Sources */,
