@@ -1,5 +1,5 @@
 //
-//  StoreHelper.swift
+//  StorageHelper.swift
 //  AutoPassApp
 //
 //  Created by rlbot on 2020/6/10.
