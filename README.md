@@ -106,3 +106,8 @@ let bleDevice = MyBLEDevice(prefixName: "AutoPass")
 
 ![Blend Micro](imgs/blend_micro.jpg)
 
+<br>
+
+## 無著作權
+
+本專案的程式碼屬於[公眾領域](https://en.wikipedia.org/wiki/Public_domain)，你可以複製、修改、發布或展示此程式，亦可進行商業利用，完全不需要經過許可。但是，當使用或引用此程式時，不得暗喻作者或指認該著作之人，為你的行為背書。
