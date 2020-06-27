@@ -74,7 +74,7 @@ Arduino HID Keyboard 的程式碼放在 `BLE_KB_Nano33` 目錄下，iOS app 的�
 
 
 
-## Q & A
+## Q&A
 
 ### Q: `BLE_KB_Nano33.ino` 的 `MY_BLE_LOCAL_NAME` 字串值一定要使用 `AutoPass_` 做前綴名稱嗎？
 
@@ -96,6 +96,7 @@ let bleDevice = MyBLEDevice(prefixName: "AutoPass")
 **A:** 經過測試，目前 `Arduino Nano 33 IoT` 的 BLE 一次最多只能接收 20 個字元，所以，如果你的密碼超過 20 個字元，這個 app 可能不適用於你。
 
 
+
 ## 更新日誌
 
 - 2020/06/21 新增 Blend Micro HID Keyboard 的程式碼，提供 Nano 33 Iot 以外的另一種選擇，程式碼放在 `BLE_KB_BlendMicro` 目錄下。 (Blend Micro 在 Arduino IDE 裡的 Board 是選 Arduino Leonardo，且需要先在 Library Manager 裡搜尋 BLEPeripheral 並安裝之。)
@@ -103,7 +104,7 @@ let bleDevice = MyBLEDevice(prefixName: "AutoPass")
 ![Blend Micro](imgs/blend_micro.jpg)
 
 
-## 無著作權
+## 無著作權宣告
 
-本專案的程式碼屬於[公眾領域](https://en.wikipedia.org/wiki/Public_domain)，你可以複製、修改、發布或展示此程式，亦可進行商業利用，完全不需要經過許可。但是，當使用或引用此程式時，不得暗喻作者或指認該著作之人，為你的行為背書。
+本專案目錄下的程式碼屬於[公眾領域](https://en.wikipedia.org/wiki/Public_domain)，你可以複製、修改、發布或展示此程式，亦可進行商業利用，完全不需要經過許可。但是，當使用或引用此程式時，不得暗喻作者或指認該著作之人，為你的行為背書。
 
