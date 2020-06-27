@@ -90,8 +90,6 @@ let bleDevice = MyBLEDevice(prefixName: "AutoPass")
 
 ![q1](imgs/prefix_name.png)
 
-<br>
-
 
 ### Q: 最多可傳送幾個字元的密碼？
 
