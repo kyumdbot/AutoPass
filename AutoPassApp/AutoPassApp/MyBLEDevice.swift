@@ -43,7 +43,7 @@ class MyBLEDevice: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate  {
     
     // MARK: - Methods
     
-    func begin(action: ((_ isReady: Bool) -> Void)? ) {
+    func begin(action: @escaping (_ isReady: Bool) -> Void ) {
         beginAction = action
         
         let queue = DispatchQueue.global()
@@ -53,7 +53,7 @@ class MyBLEDevice: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate  {
         centralManager = CBCentralManager(delegate: self, queue: queue)
     }
     
-    func scan(action: ((_ device: CBPeripheral) -> Void)?) {
+    func scan(action: @escaping (_ device: CBPeripheral) -> Void) {
         scanAction = action
         
         //- 將觸發 CBCentralManagerDelegate 的：
@@ -67,8 +67,8 @@ class MyBLEDevice: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate  {
     }
     
     func connent(to device: CBPeripheral,
-                 success: ((_ device: CBPeripheral) -> Void)?,
-                 failure: ((_ errorString: String) -> Void)?)
+                 success: @escaping (_ device: CBPeripheral) -> Void,
+                 failure: @escaping (_ errorString: String) -> Void)
     {
         connectPeripheral = device
         connectPeripheral!.delegate = self
@@ -86,11 +86,11 @@ class MyBLEDevice: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate  {
         }
     }
     
-    func onDisconnect(action: (() -> Void)?) {
+    func onDisconnect(action: @escaping () -> Void) {
         disconnectDoneAction = action
     }
     
-    func characteristicValueChanged(action: ((_ uuid: String, _ data: NSData?) -> Void)?) {
+    func characteristicValueChanged(action: @escaping (_ uuid: String, _ data: NSData?) -> Void) {
         charValueUpdatedAction = action
     }
     
