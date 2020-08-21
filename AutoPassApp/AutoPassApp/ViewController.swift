@@ -29,13 +29,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         setup()
         
-        weak var weakSelf = self
-        bleDevice.begin() { isReady in
+        bleDevice.begin() { [weak self] (isReady) in
             print("BLE Ready: \(isReady)")
             if isReady {
-                weakSelf?.showBLEDevicesViewController()
+                self?.showBLEDevicesViewController()
             } else {
-                weakSelf?.msgBox(title: "訊息：", message: "請到系統設定裡開啟藍牙。")
+                self?.msgBox(title: "訊息：", message: "請到系統設定裡開啟藍牙。")
             }
         }
     }
@@ -81,15 +80,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func showBLEDevicesViewController() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "BLEDevicesVC") as! BLEDevicesViewController
         vc.bleDevice = bleDevice
-        
-        weak var weakSelf = self
-        vc.onCloseCallback = { deviceName in
+        vc.onCloseCallback = { [weak self] (deviceName) in
             print("Close BLEDevicesViewController...")
-            weakSelf?.removeScanBarButtonItem()
-            weakSelf?.msgLabelShowDeviceName(deviceName)
-            weakSelf?.setBLEDeviceValueChangedCallback()
-            weakSelf?.setBLEDeviceOnDisconnectCallback()
-            weakSelf?.reloadTable()
+            self?.removeScanBarButtonItem()
+            self?.msgLabelShowDeviceName(deviceName)
+            self?.setBLEDeviceValueChangedCallback()
+            self?.setBLEDeviceOnDisconnectCallback()
+            self?.reloadTable()
         }
         present(vc, animated: true, completion: nil)
     }
@@ -118,10 +115,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func setBLEDeviceValueChangedCallback() {
-        weak var weakSelf = self
-        bleDevice.characteristicValueChanged(action: { uuid, data in
+        bleDevice.characteristicValueChanged(action: { [weak self] (uuid, data) in
             print("BLEDevice's characteristic value changed:")
-            weakSelf?.bleValueChanged(uuid: uuid, data: data)
+            self?.bleValueChanged(uuid: uuid, data: data)
         })
     }
     
@@ -142,13 +138,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func setBLEDeviceOnDisconnectCallback() {
-        weak var weakSelf = self
-        bleDevice.onDisconnect(action: {
+        bleDevice.onDisconnect(action: { [weak self] in
             print("BLEDevice disconnected.")
-            weakSelf?.showBLEDevicesViewController()
-            weakSelf?.msgLabelShowDeviceName("")
-            weakSelf?.clearItems()
-            weakSelf?.setupScanBarButtonItem()
+            self?.showBLEDevicesViewController()
+            self?.msgLabelShowDeviceName("")
+            self?.clearItems()
+            self?.setupScanBarButtonItem()
         })
     }
     
@@ -175,9 +170,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         let vc = storyboard?.instantiateViewController(withIdentifier: "AddItemVC") as! AddItemViewController
-        weak var weakSelf = self
-        vc.onAddedCallback = { title, password, appendEnter in
-            weakSelf?.addItem(title: title, password: password, appendEnter: appendEnter)
+        vc.onAddedCallback = { [weak self] (title, password, appendEnter) in
+            self?.addItem(title: title, password: password, appendEnter: appendEnter)
         }
         present(vc, animated: true, completion: nil)
     }

@@ -71,11 +71,9 @@ class BLEDevicesViewController: UIViewController, UITableViewDataSource, UITable
     
     func searchBleDevices() {
         print("Search BLE Devices:")
-        
-        weak var weakSelf = self
-        bleDevice.scan() { device in
+        bleDevice.scan() { [weak self] (device) in
             print("> Device: \(device.name ?? "") (\(device.identifier.uuidString))")
-            weakSelf?.addToDevices(device)
+            self?.addToDevices(device)
         }
     }
     
@@ -96,12 +94,11 @@ class BLEDevicesViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     func connectToDevice(_ device: CBPeripheral) {
-        weak var weakSelf = self
-        bleDevice.connent(to: device, success: { _ in
+        bleDevice.connent(to: device, success: { [weak self] _ in
             let deviceName = device.name ?? ""
-            weakSelf?.dismiss(animated: true, completion: { weakSelf?.callOnCloseCallbackWith(deviceName: deviceName) })
-        }, failure: { errorString in
-            weakSelf?.msgBox(title: "ERROR: ", message: errorString)
+            self?.dismiss(animated: true, completion: { self?.callOnCloseCallbackWith(deviceName: deviceName) })
+        }, failure: { [weak self] (errorString) in
+            self?.msgBox(title: "ERROR: ", message: errorString)
         })
     }
     
